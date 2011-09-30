@@ -1,0 +1,25 @@
+
+#Include %A_ScriptDir%\..\LSON\LSON.ahk
+#include Zip.ahk
+
+a1 := ["a","b","c"]
+a2 := ["A","B","C"]
+a3 := [1, 2, 3, 4]   ; this one has 4 elements
+
+zipped := zip(a1, a2, a3)
+msgbox % "zipped normal:`n`n" LSON(zipped) "`n`nNote that index 4 of ar3 is truncated" 
+unzipped := zip(zipped*)
+msgbox % "Unzipped:`n`n" LSON(unzipped)
+
+
+zipped := zip("all", a1, a2, a3)
+msgbox % "zipped all:`n`n" LSON(zipped) "`n`nNote that index 4 is here, and indexes 1 and 2 are missing" 
+unzipped := zip(zipped*)
+msgbox % "Unzipped:`n`n" LSON(unzipped) "`n`nUnlike the first unzipping, this one is exactly the same as the original"
+
+
+zipped := zip("copy", a1, a2, a3)
+msgbox % "zipped copy:`n`n" LSON(zipped) "`n`nMissing indexes are filled with the last index" 
+unzipped := zip(zipped*)
+msgbox % "Unzipped:`n`n" LSON(unzipped) "`n`nYou can see that the last index was copied when it was short."
+
