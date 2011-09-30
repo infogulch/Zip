@@ -2,7 +2,10 @@
 /*!
     Library: Zip, version 1.0
         Zip arrays.
+        
+        Supports AutoHotkey_L and AutoHotkey v2 Alpha
     Author: infogulch
+    Version: 1.0
 */
 
 /*!
