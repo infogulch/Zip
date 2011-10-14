@@ -106,26 +106,26 @@
 
 Zip( arrays* )
 {
-    ret := []
-    i := 0
     if !IsObject(arrays[1])
         mod := arrays.remove(1), mod := (mod = "all") + (mod = "copy")*2
     
-    count := ObjMaxIndex(arrays[1])
-    loop % ObjMaxIndex(arrays)
+    count := arrays[1].MaxIndex()
+    loop % arrays.MaxIndex()
     {
         if !IsObject(arrays[A_Index])
             throw Exception("Zip() only accepts arrays", -1)
-        c := ObjMaxIndex(arrays[A_Index])
+        c := arrays[A_Index].MaxIndex()
         if (mod ? c > count : c < count)
             count := c
     }
     
+    ret := []
+    i := 0
     loop % count
-        loop % (ObjMaxIndex(arrays), i++)
-            if (ObjHasKey(arrays[A_Index], i))
+        loop % (arrays.MaxIndex(), i++)
+            if (arrays[A_Index].HasKey(i))
                 ret[i,A_Index] := arrays[A_Index, i]
-            else if (mod == 2 && A_Index > ObjMaxIndex(arrays[A_Index]))
-                ret[i,A_Index] := arrays[A_Index, ObjMaxIndex(arrays[A_Index])]
+            else if (mod == 2 && i > arrays[A_Index].MaxIndex())
+                ret[i,A_Index] := arrays[A_Index, arrays[A_Index].MaxIndex()]
     return ret
 }
