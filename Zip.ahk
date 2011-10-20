@@ -78,6 +78,8 @@
             > ; notice the extra "c" and "C" where they were too short.
         
         ### See also
+            [AutoHotkey Forum topic](http://www.autohotkey.com/forum/viewtopic.php?t=77832)
+            
             The default mode is similar to [Python's zip](http://docs.python.org/library/functions.html#zip)
         
         ### License
